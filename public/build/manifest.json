@@ -1,0 +1,13 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-C5fa5DSv.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-VFL0-D2c.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}

@@ -13,19 +13,17 @@ jobs:
 
       # ---------------------------------------------------------------
       # STEP 1: Deploy the Laravel app files (everything except public/build)
-      # server-dir is RELATIVE to the FTP account's home directory.
-      # If this FTP account's home is already /home/klupjyap/crakersdemo_app,
-      # use server-dir: ./
-      # If the FTP account's home is /home/klupjyap, use server-dir: ./crakersdemo_app/
+      # This FTP account's home directory IS ALREADY /home/klupjyap/crakersdemo_app,
+      # so server-dir must be ./ (not ./crakersdemo_app/, which would nest it inside itself).
       # ---------------------------------------------------------------
       - name: FTP Deploy - App files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          username: ${{ secrets.FTP_APP_USERNAME }}
+          password: ${{ secrets.FTP_APP_PASSWORD }}
           local-dir: ./
-          server-dir: ./crakersdemo_app/
+          server-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
@@ -45,8 +43,8 @@ jobs:
 
       # ---------------------------------------------------------------
       # STEP 2: Deploy the compiled CSS/JS build assets
-      # Adjust server-dir the same way as above, but pointing at
-      # public_html/crakersDemo/build instead.
+      # This FTP account's home directory IS ALREADY /home/klupjyap/public_html/crakersDemo,
+      # so server-dir must be ./build/ (not ./crakersDemo/build/, which would nest it inside itself).
       # ---------------------------------------------------------------
       - name: FTP Deploy - Build assets
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -55,4 +53,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./public/build/
-          server-dir: ./crakersDemo/build/
+          server-dir: ./build/

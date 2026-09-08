@@ -7,7 +7,7 @@
     <title>@yield('title', 'Jegan Crackers')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-dark text-stone-800 font-sans">
+<body class="bg-stone-50 text-stone-800 font-sans">
     <header class="bg-maroon-700 text-white sticky top-0 z-40 shadow" x-data="{ menuOpen: false }">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <a href="{{ route('home') }}" class="text-lg sm:text-xl font-bold flex items-center gap-2 shrink-0">

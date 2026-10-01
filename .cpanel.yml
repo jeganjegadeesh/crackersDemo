@@ -1,5 +1,6 @@
 ---
 deployment:
   tasks:
-    - export APPPATH=/home/klupjyap/crakersdemo_app && export PUBLICPATH=/home/klupjyap/public_html/crakersDemo && /usr/bin/rsync -a --delete --exclude='.git' --exclude='.env' --exclude='storage/app/public' --exclude='storage/logs' ./ $APPPATH/
-    - export PUBLICPATH=/home/klupjyap/public_html/crakersDemo && /usr/bin/rsync -a public/build/ $PUBLICPATH/build/
+    - export DEPLOYPATH=/home/klupjyap/public_html/crackersdemo/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH
